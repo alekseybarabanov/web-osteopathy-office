@@ -1,0 +1,51 @@
+.anamnesis {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+.longtext {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+
+label {
+  font-size: large;
+}
+
+.visit {
+  margin-top: 20px;
+}
+
+.visitDate {
+  margin: 10px
+}
+
+table {
+  border: 1px solid;
+  word-break: break-all;
+  width: 100%;
+  height: 100%;
+}
+
+th, td {
+  padding: 5px;
+  text-align: center;
+}
+
+.firstCol {
+  width: 120px;
+}

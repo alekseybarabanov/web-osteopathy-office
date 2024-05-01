@@ -1,0 +1,229 @@
+<div class="visit">
+<div class="visitDate">
+  <label for="patient-visit-date">Дата приема: {{visit.date | date:'medium'}}</label>
+</div>
+<div>
+  <textarea class=anamnesis id="patient-visit-complaints" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [(ngModel)]="visit.complaints" placeholder="Жалобы"></textarea>
+  <textarea class=anamnesis id="patient-visit-anamnesis" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [(ngModel)]="visit.anamnesis" placeholder="Анамнез"></textarea>
+  <table id="customers">
+    <tr>
+      <th class="firstCol"></th>
+      <th>Биомеханическое, баллы</th>
+      <th>Ритмогенное, баллы</th>
+      <th>Нейродинамическое, баллы</th>
+    </tr>
+    <tr>
+      <td>Глобальный</td>
+      <td>
+        <app-estimation-points [selected]="visit.globBio" (changeEmitter)="this.visit.globBio = $event"></app-estimation-points>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <td>Карниальное</td>
+            <td>
+              <app-estimation-points [selected]="visit.globRithmKarnial" (changeEmitter)="this.visit.globRithmKarnial = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Кардиальное</td>
+            <td>
+              <app-estimation-points [selected]="visit.globRithmKardio" (changeEmitter)="this.visit.globRithmKardio = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Дыхательное</td>
+            <td>
+              <app-estimation-points [selected]="visit.globRightBreath" (changeEmitter)="this.visit.globRightBreath = $event"></app-estimation-points>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <td>Психосоматическое</td>
+            <td>
+              <app-estimation-points [selected]="visit.globNeiroPsihosomat" (changeEmitter)="this.visit.globNeiroPsihosomat = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Постуральное</td>
+            <td>
+              <app-estimation-points [selected]="visit.globNeiroPostural" (changeEmitter)="this.visit.globNeiroPostural = $event"></app-estimation-points>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Региональный</td>
+      <td colspan="2">
+        <table>
+          <tr>
+            <th>Область (регион)</th>
+            <th>Структуральная состовляющая</th>
+            <th>Висцеральная состовляющая</th>
+          </tr>
+          <tr>
+            <td>Головы</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionHeadStruct" (changeEmitter)="this.visit.regionHeadStruct = $event"></app-estimation-points>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Шеи</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionNeckStruct" (changeEmitter)="this.visit.regionNeckStruct = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionNeckVistz" (changeEmitter)="this.visit.regionNeckVistz = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Верхних конечностей</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionHandsStruct" (changeEmitter)="this.visit.regionHandsStruct = $event"></app-estimation-points>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Грудной</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionBrestStruct" (changeEmitter)="this.visit.regionBrestStruct = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionBrestVistz" (changeEmitter)="this.visit.regionBrestVistz = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Поясничный</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionLowerBackStruct" (changeEmitter)="this.visit.regionLowerBackStruct = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionLowerBackVistz" (changeEmitter)="this.visit.regionLowerBackVistz = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Таза</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionPelvicStruct" (changeEmitter)="this.visit.regionPelvicStruct = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionPelvicVistz" (changeEmitter)="this.visit.regionPelvicVistz = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Нижних конечностей</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionLegsStruct" (changeEmitter)="this.visit.regionLegsStruct = $event"></app-estimation-points>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Твердой мозговой оболочки</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionDuraMaterStruct" (changeEmitter)="this.visit.regionDuraMaterStruct = $event"></app-estimation-points>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <th></th>
+            <th>Висцеро-соматический компонент</th>
+            <th>Сомато-висцеральный компонент</th>
+          </tr>
+          <tr>
+            <td>Cr</td>
+            <td colspan="2">
+              <app-estimation-points [selected]="visit.regionCr" (changeEmitter)="this.visit.regionCr = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>C1-C3</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC1C3Vistz" (changeEmitter)="this.visit.regionC1C3Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC1C3Som" (changeEmitter)="this.visit.regionC1C3Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>C4-C6</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC4C6Vistz" (changeEmitter)="this.visit.regionC4C6Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC4C6Som" (changeEmitter)="this.visit.regionC4C6Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>C7-Th1</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC7Th1Vistz" (changeEmitter)="this.visit.regionC7Th1Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionC7Th1Som" (changeEmitter)="this.visit.regionC7Th1Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Th2-Th5</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh2Th5Vistz" (changeEmitter)="this.visit.regionTh2Th5Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh2Th5Som" (changeEmitter)="this.visit.regionTh2Th5Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Th6-Th9</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh6Th9Vistz" (changeEmitter)="this.visit.regionTh6Th9Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh6Th9Som" (changeEmitter)="this.visit.regionTh6Th9Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>Th10-L1</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh10L1Vistz" (changeEmitter)="this.visit.regionTh10L1Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionTh10L1Som" (changeEmitter)="this.visit.regionTh10L1Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+          <tr>
+            <td>L2-L5</td>
+            <td>
+              <app-estimation-points [selected]="visit.regionL2L5Vistz" (changeEmitter)="this.visit.regionL2L5Vistz = $event"></app-estimation-points>
+            </td>
+            <td>
+              <app-estimation-points [selected]="visit.regionL2L5Som" (changeEmitter)="this.visit.regionL2L5Som = $event"></app-estimation-points>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Локальный</td>
+      <td colspan="3">
+        <input id="local" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' class="longtext" [(ngModel)]="visit.local" placeholder="Указывают отдельные соматические дисфункции (острые или хронические)"/>
+      </td>
+    </tr>
+    <tr>
+      <td>Доминирующая соматическая дисфункция</td>
+      <td colspan="3">
+        <input id="dominant" class="longtext" [(ngModel)]="visit.dominant"/>
+      </td>
+    </tr>
+  </table>  
+  <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-treatment-plan" [(ngModel)]="visit.treatmentPlan" placeholder="План лечения"></textarea>
+  <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-recommendations" [(ngModel)]="visit.recommendations" placeholder="Рекоммендации"></textarea>
+</div>
+</div>

@@ -1,0 +1,15 @@
+
+.visitDate {
+  margin: 10px;
+  font-size: large;
+}
+
+.history {
+  display: flex;
+  padding-inline-start: 0px;
+}
+
+li {
+  list-style-type: none;
+  padding-right: 10px;
+}

@@ -1,0 +1,25 @@
+<div *ngIf="patient">
+  <div class="flex-container">
+    <div>
+      <input id="patient-lastname" [(ngModel)]="patient.lastName" placeholder="Фамилия"/>
+    </div>
+    <div>
+      <input id="patient-firstname" [(ngModel)]="patient.firstName" placeholder="Имя"/>
+    </div>
+    <div>
+      <input id="patient-middlename" [(ngModel)]="patient.middleName" placeholder="Отчество"/>
+    </div>
+    <div>
+      <input id="patient-phone" [(ngModel)]="patient.phone" placeholder="Телефон"/>
+    </div>
+  </div>
+  <button type="button" (click)="goBack()">Назад</button>
+  <button type="button" (click)="save()">Сохранить</button>
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

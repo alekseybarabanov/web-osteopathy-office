@@ -1,0 +1,12 @@
+<ul class="history">
+  <li class="label">
+    <label>История приемов</label>
+  </li>
+  <li>
+    <select [(ngModel)]="selected" (ngModelChange)="onChangeofOptions($event)">
+      <option [value]="-1" class="visitDate"></option>
+      <option *ngFor="let visit of patient.visits; let i = index" [value]="i" class="visitDate">{{visit.date | date:'short'}}</option>
+    </select>
+  </li>
+</ul>
+<app-patient-visit *ngIf="selected >= 0" [patient]="patient" [visit]="patient.visits[selected]"></app-patient-visit>

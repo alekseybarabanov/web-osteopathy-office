@@ -1,0 +1,12 @@
+.notSelected {
+  border-style: none;
+}
+.selectedOne {
+  background-color: #d5f4e6;
+}
+.selectedTwo {
+  background-color: #fefbd8
+}
+.selectedThree {
+  background-color: #f4e1d2;
+}
