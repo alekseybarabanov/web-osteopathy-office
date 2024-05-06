@@ -1,6 +1,6 @@
 <div class="visit">
 <div class="visitDate">
-  <label for="patient-visit-date">Дата приема: {{visit.date | date:'medium'}}</label>
+  <label for="patient-visit-date">Дата приема: {{visit.visitDate | date:'medium'}}</label>
 </div>
 <div>
   <textarea class=anamnesis id="patient-visit-complaints" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [(ngModel)]="visit.complaints" placeholder="Жалобы"></textarea>
@@ -213,7 +213,7 @@
     <tr>
       <td>Локальный</td>
       <td colspan="3">
-        <input id="local" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' class="longtext" [(ngModel)]="visit.local" placeholder="Указывают отдельные соматические дисфункции (острые или хронические)"/>
+        <input id="local" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' class="longtext" [(ngModel)]="visit.localDisfunction" placeholder="Указывают отдельные соматические дисфункции (острые или хронические)"/>
       </td>
     </tr>
     <tr>

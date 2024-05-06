@@ -5,7 +5,7 @@
   <li>
     <select [(ngModel)]="selected" (ngModelChange)="onChangeofOptions($event)">
       <option [value]="-1" class="visitDate"></option>
-      <option *ngFor="let visit of patient.visits; let i = index" [value]="i" class="visitDate">{{visit.date | date:'short'}}</option>
+      <option *ngFor="let visit of patient.visits; let i = index" [value]="i" class="visitDate">{{visit.visitDate | date:'short'}}</option>
     </select>
   </li>
 </ul>

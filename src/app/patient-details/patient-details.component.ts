@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Patient, patients } from '../patients';
+import { Patient } from '../patients';
 import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
 
@@ -36,7 +36,7 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   newVisit(): void {
-    this.patient!.currentVisit = {date: new Date(), anamnesis: "", complaints: ""}
+    this.patient!.currentVisit = {visitDate: new Date()}
   }
 
   dropVisit(): void {
@@ -50,7 +50,7 @@ export class PatientDetailsComponent implements OnInit {
   save(): void {
     if (this.patient) {
       this.patientService.updatePatient(this.patient)
-        .subscribe(() => {});
+        .subscribe((patient) => { this.patient = patient });
     }
   }
 }

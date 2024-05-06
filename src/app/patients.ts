@@ -7,14 +7,13 @@ export interface Patient {
   description: string;
   currentVisit?: Visit;
   visits: Visit[];
-
-  fullName: () => string
 }
 
 export interface Visit {
-  date: Date;
-  complaints: string;
-  anamnesis: string;
+  id?: number;
+  visitDate: Date;
+  complaints?: string;
+  anamnesis?: string;
   globBio?: number;
   globRithmKarnial?: number;
   globRithmKardio?: number;
@@ -48,7 +47,7 @@ export interface Visit {
   regionTh10L1Som?: number;
   regionL2L5Vistz?: number;
   regionL2L5Som?: number;
-  local?: string;
+  localDisfunction?: string;
   dominant?: string;
   treatmentPlan?: string;
   recommendations?: string;
@@ -56,54 +55,18 @@ export interface Visit {
 }
 
 export class PatientImpl implements Patient {
+    firstName = ''
+    middleName = ''
+    phone = ''
+    description = ''
+    visits = []
+    id = undefined
   constructor(
-    public firstName: string, 
-    public middleName: string,
     public lastName: string,
-    public phone: string,
-    public description: string,
-    public visits: Visit[],
-    public id?: number
-    ) 
-    { 
-
+   )
+    {
     }
- 
-  fullName() {
-    return this.firstName + " " + this.middleName + " " + this.lastName;
-  } 
 }
-
-export const patients: Patient[] = [
-  new PatientImpl(
-    'Михаил',
-    "Иванов",
-    "",
-    "+77477777777",
-    'анамнез Иванова',
-    [],
-    1
-  ),
-  new PatientImpl(
-    'Юлия',
-   "Васильева",
-    "Ивановна",
-     "",
-    'анамнез Васильевой',
-    [{date: new Date, anamnesis: "что-то болит", complaints: ""}],
-    2
-  ),
-  new PatientImpl(
-    'Катя',
-    "Сидорова",
-    "Иосифовна",
-    "+123456",
-    'анамнез ребенка до года',
-    [],
-    3
-  )
-];
-
 
 /*
 Copyright Google LLC. All Rights Reserved.

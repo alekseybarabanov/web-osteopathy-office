@@ -8,9 +8,6 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientVisitComponent } from './patient-visit/patient-visit.component';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-
 import { AppRoutingModule } from './app-routing.module';
 import { PatientSearchComponent } from './patient-search/patient-search.component';
 import { NewPatientComponent } from './new-patient/new-patient.component';
@@ -25,12 +22,6 @@ import { MessagesComponent } from './messages/messages.component';
     FormsModule,
     BrowserModule,
     HttpClientModule,
-     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
  ],
   declarations: [
     AppComponent,

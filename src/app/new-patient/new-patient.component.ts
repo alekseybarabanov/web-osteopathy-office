@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Patient, PatientImpl, patients } from '../patients';
+import { Patient, PatientImpl } from '../patients';
 import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
 
@@ -28,12 +28,7 @@ export class NewPatientComponent implements OnInit {
   getPatient(): void {
     const name = this.route.snapshot.paramMap.get('name')!;
     this.patient = new PatientImpl(
-      '',
-      "",
-      name,
-      "",
-      '',
-      [{date: new Date(), anamnesis: "", complaints: ""}]
+      name
     )
     this.messageService.add(`details patient name: ${JSON.stringify(name)}`)
   
@@ -46,7 +41,10 @@ export class NewPatientComponent implements OnInit {
   save(): void {
     if (this.patient) {
       this.patientService.addPatient(this.patient)
-        .subscribe(savedPatient => this.router.navigate(['/patients/'+savedPatient.id!]));
+        .subscribe(savedPatient => {
+            this.patient = savedPatient
+            this.router.navigate(['/patients/'+savedPatient.id!])
+        });
     }
   }
 }

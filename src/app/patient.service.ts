@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 @Injectable({ providedIn: 'root' })
 export class PatientService {
 
-  private patientUrl = 'api/patients';  // URL to web api
+  private patientUrl = 'http://localhost:8080/api/patient';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,28 +21,6 @@ export class PatientService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET patients from the server */
-  getPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(this.patientUrl)
-      .pipe(
-        tap(x => this.log('fetched', x)),
-        catchError(this.handleError<Patient[]>('getPatients', []))
-      );
-  }
-
-  /** GET patient by id. Return `undefined` when id not found */
-  getPatientNo404<Data>(id: number): Observable<Patient> {
-    const url = `${this.patientUrl}/?id=${id}`;
-    return this.http.get<Patient[]>(url)
-      .pipe(
-        map(patients => patients[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? 'fetched' : 'did not find';
-          this.log(`${outcome} patient id=${id}`, h);
-        }),
-        catchError(this.handleError<Patient>(`get patient id=${id}`))
-      );
-  }
 
   /** GET patient by id. Will 404 if id not found */
   getPatient(id: number): Observable<Patient> {
@@ -59,6 +37,14 @@ export class PatientService {
       // if not search term, return empty patient array.
       return of([]);
     }
+    return this.http.get<Patient[]>(`${this.patientUrl}/search?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found patients matching "${term}"`,x) :
+         this.log(`no patients matching "${term}"`,x)),
+      catchError(this.handleError<Patient[]>('searchPatients', []))
+    );
+
+    /*
     var fn = this.http.get<Patient[]>(`${this.patientUrl}/?firstName=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found patients matching "${term}"`,x) :
@@ -80,6 +66,7 @@ export class PatientService {
 
     return zip(ln, fn, mn)
     .pipe(map(x => x[0].concat(x[1])))
+    */
   }
 
   //////// Save methods //////////
@@ -103,10 +90,10 @@ export class PatientService {
   }
 
   /** PUT: update the patient on the server */
-  updatePatient(patient: Patient): Observable<any> {
-    return this.http.put(this.patientUrl, patient, this.httpOptions).pipe(
+  updatePatient(patient: Patient): Observable<Patient> {
+    return this.http.put<Patient>(this.patientUrl, patient, this.httpOptions).pipe(
       tap(x => this.log(`updated patient id=${patient.id}`, x)),
-      catchError(this.handleError<any>('update patient'))
+      catchError(this.handleError<Patient>('update patient'))
     );
   }
 
