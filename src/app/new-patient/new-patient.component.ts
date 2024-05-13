@@ -27,8 +27,21 @@ export class NewPatientComponent implements OnInit {
 
   getPatient(): void {
     const name = this.route.snapshot.paramMap.get('name')!;
+    var nameArr = name.split(/\s+/,3)
+    var firstName = '', lastName = '', middleName = ''
+    if (nameArr.length > 0) {
+        lastName = nameArr[0]
+    }
+    if (nameArr.length > 1) {
+        firstName = nameArr[1]
+    }
+    if (nameArr.length > 2) {
+        middleName = nameArr[2]
+    }
     this.patient = new PatientImpl(
-      name
+      lastName,
+      firstName,
+      middleName,
     )
     this.messageService.add(`details patient name: ${JSON.stringify(name)}`)
   

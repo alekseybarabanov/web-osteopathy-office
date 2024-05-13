@@ -12,6 +12,9 @@
     <div>
       <input id="patient-phone" [(ngModel)]="patient.phone" placeholder="Телефон"/>
     </div>
+    <div>
+      <input id="birthdate" [(ngModel)]="patient.birthDate" placeholder="День рождения"/>
+    </div>
   </div>
   <app-patient-visit *ngIf="patient.currentVisit != null" [patient]="patient" [visit]="patient.currentVisit"></app-patient-visit>
   <button type="button" (click)="goBack()">Назад</button>

@@ -4,6 +4,7 @@ export interface Patient {
   lastName: string;
   middleName: string;
   phone: string;
+  birthDate: string;
   description: string;
   currentVisit?: Visit;
   visits: Visit[];
@@ -55,14 +56,15 @@ export interface Visit {
 }
 
 export class PatientImpl implements Patient {
-    firstName = ''
-    middleName = ''
     phone = ''
     description = ''
+    birthDate = ''
     visits = []
     id = undefined
   constructor(
     public lastName: string,
+    public firstName: string,
+    public middleName: string
    )
     {
     }

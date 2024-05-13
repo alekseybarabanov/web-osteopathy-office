@@ -9,7 +9,13 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-image": "docker build -t nginx-web-osteopathy .",
+    "remove-image": "docker rmi nginx-web-osteopathy",
+    "run-container": "docker run --name nginx-web-osteopathy-container -d -p 8080:80 nginx-web-osteopathy",
+    "remove-container": "docker rm -f nginx-web-osteopathy-container",
+    "containerize": "npm run build-image && npm run run-container",
+    "recontainerize": "npm run remove-container && npm run build-image && npm run run-container"
   },
   "private": true,
   "dependencies": {
