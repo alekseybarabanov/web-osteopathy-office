@@ -1,0 +1,8 @@
+<h2>Недавние пациенты</h2>
+<ul class="patients">
+    <li *ngFor="let patient of patients$ | async">
+        <button [class.selected]="patient === selectedPatient" type="button" (click)="onSelect(patient)">
+            <span class="name">{{ name(patient) }}</span>
+        </button>
+    </li>
+</ul>

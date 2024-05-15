@@ -31,6 +31,15 @@ export class PatientService {
     );
   }
 
+  /** GET latest patients */
+  getLatest(): Observable<Patient[]> {
+    const url = `${this.patientUrl}/latest`;
+    return this.http.get<Patient[]>(url).pipe(
+        tap(x => this.log(`latest patients`, x)),
+        catchError(this.handleError<Patient[]>('latestPatients',[]))
+    );
+  }
+
   /* GET patients whose name contains search term */
   searchPatients(term: string): Observable<Patient[]> {
     if (!term.trim()) {

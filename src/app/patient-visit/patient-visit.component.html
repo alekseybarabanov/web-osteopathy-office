@@ -1,6 +1,6 @@
 <div class="visit">
 <div class="visitDate">
-  <label for="patient-visit-date">Дата приема: {{visit.visitDate | date:'medium'}}</label>
+  <label for="patient-visit-date">Дата приема: {{visit.visitDate | date:'dd.MM.yy HH:mm'}}</label>
 </div>
 <div>
   <textarea class=anamnesis id="patient-visit-complaints" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [(ngModel)]="visit.complaints" placeholder="Жалобы"></textarea>

@@ -13,6 +13,7 @@ import { PatientSearchComponent } from './patient-search/patient-search.componen
 import { NewPatientComponent } from './new-patient/new-patient.component';
 import { PatientHistoryComponent } from './patient-history/patient-history.component';
 import { EstimationPointsComponent } from './estimation-points/estimation-points.component'
+import { LatestPatientsComponent } from './latest-patients/latest-patients.component'
 
 import { MessagesComponent } from './messages/messages.component';
 
@@ -33,6 +34,7 @@ import { MessagesComponent } from './messages/messages.component';
     NewPatientComponent,
     PatientHistoryComponent,
     EstimationPointsComponent,
+    LatestPatientsComponent,
   ],
   bootstrap: [
     AppComponent
