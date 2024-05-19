@@ -6,6 +6,7 @@ export interface Patient {
   phone: string;
   birthDate: string;
   description: string;
+  nextVisit: Date;
   currentVisit?: Visit;
   visits: Visit[];
 }
@@ -60,6 +61,7 @@ export class PatientImpl implements Patient {
     description = ''
     birthDate = ''
     visits = []
+    nextVisit = new Date()
     id = undefined
   constructor(
     public lastName: string,

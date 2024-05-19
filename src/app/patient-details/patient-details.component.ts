@@ -44,6 +44,7 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   goBack(): void {
+    this.save()
     this.router.navigate(['']);
   }
 
