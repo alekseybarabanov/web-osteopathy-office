@@ -14,6 +14,7 @@ import { NewPatientComponent } from './new-patient/new-patient.component';
 import { PatientHistoryComponent } from './patient-history/patient-history.component';
 import { EstimationPointsComponent } from './estimation-points/estimation-points.component'
 import { LatestPatientsComponent } from './latest-patients/latest-patients.component'
+import { DatePipe } from '@angular/common';
 
 import { MessagesComponent } from './messages/messages.component';
 
@@ -38,7 +39,8 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   bootstrap: [
     AppComponent
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class AppModule { }
 

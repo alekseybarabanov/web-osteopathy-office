@@ -5,28 +5,53 @@ import { Location } from '@angular/common';
 import { Patient, Visit } from '../patients';
 import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-patient-visit',
   templateUrl: './patient-visit.component.html',
-  styleUrls: ['./patient-visit.component.css']
+  styleUrls: ['./patient-visit.component.css'],
 })
-export class PatientVisitComponent {
+export class PatientVisitComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientService,
     private location: Location,
     private messageService: MessageService,
+    private datePipe: DatePipe,
   ) { }
 
   @Input() patient!: Patient;
   @Input() visit!: Visit;
+
+  visitDate!: String
+
+  ngOnInit(): void {
+      this.visitDate = this.datePipe.transform(this.visit.visitDate,'dd.MM.yy HH:mm')!!
+  }
+
+  public onVisitDate(event: string): void {
+    try {
+        var parts = event.split(' ');
+        var fp = parts[0].split('.');
+        var sp = parts[1].split(':');
+        var dt = new Date(2000 + +fp[2], +fp[1]-1, +fp[0], +sp[0],+sp[1]);
+        if (dt != null) {
+            this.visit.visitDate = dt
+            console.log(dt)
+            this.visitDate = event
+        }
+    } catch (err) {
+        console.log(err)
+    }
+  }
   
   public onGlobalBio(event: number | undefined): void {
     //do something on the parent with the data
     this.visit.globBio = event
   }
+
 }
 
 
