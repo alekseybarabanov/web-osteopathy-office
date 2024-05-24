@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './patient-visit.component.html',
   styleUrls: ['./patient-visit.component.css'],
 })
-export class PatientVisitComponent implements OnInit {
+export class PatientVisitComponent implements OnInit, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +29,18 @@ export class PatientVisitComponent implements OnInit {
 
   ngOnInit(): void {
       this.visitDate = this.datePipe.transform(this.visit.visitDate,'dd.MM.yy HH:mm')!!
+  }
+
+  ngAfterViewInit(): void {
+      setTimeout(() => {
+        var el = document.getElementById("patient-visit-complaints");
+        el!.style.height = 'auto';
+        el!.style.height = (el!.scrollHeight) + "px";
+
+        var el = document.getElementById("patient-visit-anamnesis");
+        el!.style.height = 'auto';
+        el!.style.height = (el!.scrollHeight) + "px";
+      }, 200)
   }
 
   public onVisitDate(event: string): void {
