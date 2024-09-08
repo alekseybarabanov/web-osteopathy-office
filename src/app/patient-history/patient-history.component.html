@@ -9,4 +9,4 @@
     </select>
   </li>
 </ul>
-<app-patient-visit *ngIf="selected >= 0" [patient]="patient" [visit]="patient.visits[selected]"></app-patient-visit>
+<app-patient-visit *ngIf="selected >= 0" [patient]="patient" [visit]="patient.visits[selected]" (changed)="changed.emit()"></app-patient-visit>

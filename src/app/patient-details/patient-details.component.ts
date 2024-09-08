@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../patients';
 import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-patient-details',
@@ -13,6 +15,7 @@ import { MessageService } from '../message.service';
 export class PatientDetailsComponent implements OnInit {
 
   patient: Patient | undefined;
+  changes: Subject<void> = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +26,10 @@ export class PatientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPatient();
+
+    this.changes.pipe(
+      debounceTime(1000)
+    ).subscribe(x =>  this.save() );
   }
 
   getPatient(): void {
@@ -33,6 +40,11 @@ export class PatientDetailsComponent implements OnInit {
         this.patient = patient
         this.messageService.add(`details patient: ${JSON.stringify(patient)}`);
       });
+  }
+
+  changed(): void {
+      console.log("changed");
+      this.changes.next(void 0)
   }
 
   newVisit(): void {

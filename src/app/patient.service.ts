@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of, zip } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, debounceTime } from 'rxjs/operators';
 
 import { Patient } from './patients';
 import { MessageService } from './message.service';
@@ -26,7 +26,7 @@ export class PatientService {
   getPatient(id: number): Observable<Patient> {
     const url = `${this.patientUrl}/${id}`;
     return this.http.get<Patient>(url).pipe(
-      tap(x => this.log(`fetched patient id=${id}`, x)),
+      tap(x => console.log(`fetched patient id=${id}`, x)),
       catchError(this.handleError<Patient>(`getPatient id=${id}`))
     );
   }
@@ -35,7 +35,7 @@ export class PatientService {
   getLatest(): Observable<Patient[]> {
     const url = `${this.patientUrl}/latest`;
     return this.http.get<Patient[]>(url).pipe(
-        tap(x => this.log(`latest patients`, x)),
+        tap(x => console.log(`latest patients`, x)),
         catchError(this.handleError<Patient[]>('latestPatients',[]))
     );
   }
@@ -48,8 +48,8 @@ export class PatientService {
     }
     return this.http.get<Patient[]>(`${this.patientUrl}/search?name=${term}`).pipe(
       tap(x => x.length ?
-         this.log(`found patients matching "${term}"`,x) :
-         this.log(`no patients matching "${term}"`,x)),
+         console.log(`found patients matching "${term}"`,x) :
+         console.log(`no patients matching "${term}"`,x)),
       catchError(this.handleError<Patient[]>('searchPatients', []))
     );
 
@@ -83,7 +83,7 @@ export class PatientService {
   /** POST: add a new patient to the server */
   addPatient(patient: Patient): Observable<Patient> {
     return this.http.post<Patient>(this.patientUrl, patient, this.httpOptions).pipe(
-      tap((newPatient: Patient) => this.log(`added patient w/ id=${newPatient.id}`, newPatient)),
+      tap((newPatient: Patient) => console.log(`added patient w/ id=${newPatient.id}`, newPatient)),
       catchError(this.handleError<Patient>('add patient'))
     );
   }
@@ -93,7 +93,7 @@ export class PatientService {
     const url = `${this.patientUrl}/${id}`;
 
     return this.http.delete<Patient>(url, this.httpOptions).pipe(
-      tap(x => this.log(`deleted patient id=${id}`, x)),
+      tap(x => console.log(`deleted patient id=${id}`, x)),
       catchError(this.handleError<Patient>('delete patient'))
     );
   }
@@ -101,7 +101,7 @@ export class PatientService {
   /** PUT: update the patient on the server */
   updatePatient(patient: Patient): Observable<Patient> {
     return this.http.put<Patient>(this.patientUrl, patient, this.httpOptions).pipe(
-      tap(x => this.log(`updated patient id=${patient.id}`, x)),
+      tap(x => console.log(`updated patient id=${patient.id}`, x)),
       catchError(this.handleError<Patient>('update patient'))
     );
   }
@@ -120,7 +120,7 @@ export class PatientService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed`,error);
+      console.log(`${operation} failed`,error);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -21,6 +21,7 @@ export class PatientHistoryComponent {
   ) { }
 
   @Input() patient!: Patient;
+  @Output() changed = new EventEmitter<void>();
 
   selected: number = -1
   

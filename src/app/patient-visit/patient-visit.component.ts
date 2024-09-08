@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, AfterViewInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -24,6 +24,7 @@ export class PatientVisitComponent implements OnInit, AfterViewInit {
 
   @Input() patient!: Patient;
   @Input() visit!: Visit;
+  @Output() changed = new EventEmitter<void>();
 
   visitDate!: String
 

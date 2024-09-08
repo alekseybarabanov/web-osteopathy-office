@@ -13,13 +13,12 @@
       <input id="birthdate" [(ngModel)]="patient.birthDate" placeholder="Дата рождения"/>
     </div>
   </div>
-  <app-patient-visit *ngIf="patient.currentVisit != null" [patient]="patient" [visit]="patient.currentVisit"></app-patient-visit>
+  <app-patient-visit *ngIf="patient.currentVisit != null" [patient]="patient" [visit]="patient.currentVisit" (changed)="changed()"></app-patient-visit>
   <button type="button" (click)="goBack()">Сохранить и выйти</button>
-  <button type="button" (click)="save()">Сохранить</button>
   <button *ngIf="patient.currentVisit == null" type="button" (click)="newVisit()">Новый прием</button>
   <button *ngIf="patient.currentVisit != null" type="button" (click)="dropVisit()">Удалить прием</button>
   <div *ngIf="patient != null && patient.visits != null && patient.visits.length > 0">
-    <app-patient-history [patient]="patient"></app-patient-history>
+    <app-patient-history [patient]="patient" (changed)="changed()"></app-patient-history>
   </div>
 
 </div>
