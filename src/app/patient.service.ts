@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 @Injectable({ providedIn: 'root' })
 export class PatientService {
 
-  private patientUrl = 'http://localhost:8080/api/patient';  // URL to web api
+  private patientUrl = 'http://doctor-osteopat.kz/api/patient';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
