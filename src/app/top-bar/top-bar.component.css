@@ -3,27 +3,43 @@
 }
 img {
   border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(138, 164, 194)
+  background-color: #add3ff;
+  position: relative;
 }
 
 li {
   float: left;
   color: white;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   display: inline;
 }
 .logo {
-  float: right
+  float: right;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
+.txt {
+  width: 80%;
+  margin: 14px 0px;
+}
+
+h1 {
+  font-size: 3.7vw;
+}
 
 /*
 Copyright Google LLC. All Rights Reserved.

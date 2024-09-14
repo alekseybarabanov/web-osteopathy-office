@@ -30,7 +30,7 @@ export class LatestPatientsComponent implements OnInit {
   }
 
   name(item: Patient): string {
-    return item.firstName + " " + item.middleName + " " + item.lastName;
+    return item.lastName + " " + item.firstName + " " + item.middleName;
   }
 
   onSelect(patient: Patient): void {
