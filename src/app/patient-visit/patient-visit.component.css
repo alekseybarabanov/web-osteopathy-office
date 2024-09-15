@@ -36,16 +36,17 @@ label {
 
 table {
   border: 1px solid;
-  word-break: break-all;
+  word-break: keep-all;
   width: 100%;
   height: 100%;
+  font-size: 1vw;
 }
 
 th, td {
-  padding: 5px;
+  padding: 2px 0px;
   text-align: center;
 }
 
 .firstCol {
-  width: 120px;
+  width: 10%;
 }
