@@ -47,6 +47,11 @@ th, td {
   text-align: center;
 }
 
-.firstCol {
+.narrowCol {
   width: 10%;
 }
+
+.rare {
+  width: 20%;
+}
+

@@ -8,10 +8,10 @@
   <textarea class=anamnesis id="patient-visit-anamnesis" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
   <table id="customers">
     <tr>
-      <th class="firstCol"></th>
+      <th class="narrowCol"></th>
       <th>Биомеханическое, баллы</th>
       <th>Ритмогенное, баллы</th>
-      <th>Нейродинамическое, баллы</th>
+      <th class="rare">Нейродинамическое, баллы</th>
     </tr>
     <tr>
       <td>Глобальный</td>
@@ -21,7 +21,7 @@
       <td>
         <table>
           <tr>
-            <td>Краниальное</td>
+            <td class="narrowCol">Краниальное</td>
             <td>
               <app-estimation-points [selected]="visit.globRithmKarnial" (changeEmitter)="this.visit.globRithmKarnial = $event; this.changed.emit();"></app-estimation-points>
             </td>
@@ -62,7 +62,7 @@
       <td colspan="2">
         <table>
           <tr>
-            <th>Область (регион)</th>
+            <th class="narrowCol">Область (регион)</th>
             <th>Структуральная состовляющая</th>
             <th>Висцеральная состовляющая</th>
           </tr>
@@ -146,7 +146,7 @@
             </td>
           </tr>
           <tr>
-            <td>C1-C3</td>
+            <td class="narrowCol">C1-C3</td>
             <td>
               <app-estimation-points [selected]="visit.regionC1C3Vistz" (changeEmitter)="this.visit.regionC1C3Vistz = $event; this.changed.emit();"></app-estimation-points>
             </td>
