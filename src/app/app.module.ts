@@ -17,6 +17,8 @@ import { LatestPatientsComponent } from './latest-patients/latest-patients.compo
 import { DatePipe } from '@angular/common';
 
 import { MessagesComponent } from './messages/messages.component';
+import { HostnameService } from './hostname.service';
+import { WINDOW_PROVIDERS } from './window.providers';
 
 @NgModule({
   imports: [
@@ -40,7 +42,7 @@ import { MessagesComponent } from './messages/messages.component';
   bootstrap: [
     AppComponent
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, WINDOW_PROVIDERS, HostnameService],
 })
 export class AppModule { }
 

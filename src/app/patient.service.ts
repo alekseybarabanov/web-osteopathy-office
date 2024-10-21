@@ -6,20 +6,25 @@ import { catchError, map, tap, debounceTime } from 'rxjs/operators';
 
 import { Patient } from './patients';
 import { MessageService } from './message.service';
+import { HostnameService } from './hostname.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class PatientService {
 
-  private patientUrl = 'https://doctor-osteopat.kz/api/patient';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  private patientUrl = '';
+
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private hostnameService: HostnameService,
+    private messageService: MessageService) {
+  	this.patientUrl = `https://${hostnameService.getHostname()}/api/patient`;  // URL to web api
+  }
 
 
   /** GET patient by id. Will 404 if id not found */
