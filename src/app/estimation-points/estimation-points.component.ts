@@ -10,17 +10,12 @@ export class EstimationPointsComponent {
 
 
   @Input() selected?: number;
-  @Output() changeEmitter = new EventEmitter<number | null>();
+  @Output() changeEmitter = new EventEmitter<number | undefined>();
 
   
   onChange(value: number | undefined) {
-    if (value) {
-        this.selected = value
-        this.changeEmitter.emit(value);
-    } else {
-        this.selected = null
-        this.changeEmitter.emit(null);
-    }
+    this.selected = value
+    this.changeEmitter.emit(value);
   }
 }
 
