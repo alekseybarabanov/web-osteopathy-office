@@ -2,9 +2,10 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Visit } from '../patients';
 
 @Component({
-  selector: 'app-estimation-points',
-  templateUrl: './estimation-points.component.html',
-  styleUrls: ['./estimation-points.component.css']
+    selector: 'app-estimation-points',
+    templateUrl: './estimation-points.component.html',
+    styleUrls: ['./estimation-points.component.css'],
+    standalone: false
 })
 export class EstimationPointsComponent {
 

@@ -22,9 +22,10 @@ interface HourSlot {
 }
 
 @Component({
-  selector: 'app-google-calendar',
-  templateUrl: './google-calendar.component.html',
-  styleUrls: ['./google-calendar.component.css'],
+    selector: 'app-google-calendar',
+    templateUrl: './google-calendar.component.html',
+    styleUrls: ['./google-calendar.component.css'],
+    standalone: false
 })
 export class GoogleCalendarComponent implements OnInit, OnDestroy {
   authenticated = false;

@@ -1,6 +1,9 @@
 <div class="calendar-container">
   <div class="calendar-header">
     <h2>Календарь</h2>
+    <button *ngIf="!authenticated" class="auth-button" (click)="signIn()">
+      Войти
+    </button>
     <button *ngIf="authenticated" class="auth-button signout" (click)="signOut()">
       Выйти
     </button>
@@ -69,7 +72,7 @@
             <span class="hour-label">{{ slot.label }}</span>
             <div class="hour-content">
               <ng-container *ngFor="let he of slot.events">
-                <div *ngIf="he.isStart" class="hour-event" [style.border-left-color]="he.event.color">
+                <div *ngIf="he.isStart" class="hour-event" [style.background-color]="he.event.color + '20'" [style.border-left-color]="he.event.color">
                   <span class="event-time">
                     {{ formatTime(he.event.start) }}&ndash;{{ formatTime(he.event.end) }}
                   </span>
@@ -79,7 +82,7 @@
                     <span class="event-calendar-name">{{ he.event.calendarName }}</span>
                   </span>
                 </div>
-                <div *ngIf="!he.isStart" class="hour-event continuation" [style.border-left-color]="he.event.color">
+                <div *ngIf="!he.isStart" class="hour-event continuation" [style.background-color]="he.event.color + '15'" [style.border-left-color]="he.event.color">
                   <span class="event-summary continuation-text">{{ he.event.summary }}</span>
                 </div>
               </ng-container>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -21,31 +21,24 @@ import { MessagesComponent } from './messages/messages.component';
 import { HostnameService } from './hostname.service';
 import { WINDOW_PROVIDERS } from './window.providers';
 
-@NgModule({
-  imports: [
-    AppRoutingModule,
-    FormsModule,
-    BrowserModule,
-    HttpClientModule,
- ],
-  declarations: [
-    AppComponent,
-    TopBarComponent,
-    PatientDetailsComponent,
-    PatientSearchComponent,
-    MessagesComponent,
-    PatientVisitComponent,
-    NewPatientComponent,
-    PatientHistoryComponent,
-    EstimationPointsComponent,
-    LatestPatientsComponent,
-    GoogleCalendarComponent,
-  ],
-  bootstrap: [
-    AppComponent
-  ],
-  providers: [DatePipe, WINDOW_PROVIDERS, HostnameService],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        TopBarComponent,
+        PatientDetailsComponent,
+        PatientSearchComponent,
+        MessagesComponent,
+        PatientVisitComponent,
+        NewPatientComponent,
+        PatientHistoryComponent,
+        EstimationPointsComponent,
+        LatestPatientsComponent,
+        GoogleCalendarComponent,
+    ],
+    bootstrap: [
+        AppComponent
+    ], imports: [AppRoutingModule,
+        FormsModule,
+        BrowserModule], providers: [DatePipe, WINDOW_PROVIDERS, HostnameService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
 
 

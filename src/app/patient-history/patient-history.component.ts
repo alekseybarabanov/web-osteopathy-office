@@ -7,9 +7,10 @@ import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-patient-history',
-  templateUrl: './patient-history.component.html',
-  styleUrls: ['./patient-history.component.css']
+    selector: 'app-patient-history',
+    templateUrl: './patient-history.component.html',
+    styleUrls: ['./patient-history.component.css'],
+    standalone: false
 })
 export class PatientHistoryComponent {
 

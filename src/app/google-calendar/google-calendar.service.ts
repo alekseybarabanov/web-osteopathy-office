@@ -61,14 +61,27 @@ export class GoogleCalendarService {
             console.error('OAuth error:', response.error);
             return;
           }
+          // Persist token for session
+          sessionStorage.setItem('gapi_token', JSON.stringify(response));
+          gapi.client.setToken(response);
           this.authenticated$.next(true);
           this.loadCalendarMeta().then(() => this.loadEvents(new Date()));
         });
       },
     });
     this.gisLoaded = true;
-    // Auto sign-in: prompt user immediately
-    this.signIn();
+    // Try to restore token from session instead of prompting
+    this.tryRestoreToken();
+  }
+
+  private tryRestoreToken(): void {
+    const stored = sessionStorage.getItem('gapi_token');
+    if (stored) {
+      const token = JSON.parse(stored);
+      gapi.client.setToken(token);
+      this.authenticated$.next(true);
+      this.loadCalendarMeta().then(() => this.loadEvents(new Date()));
+    }
   }
 
   signIn(): void {
@@ -76,7 +89,6 @@ export class GoogleCalendarService {
       console.error('GIS client not loaded yet');
       return;
     }
-    // Use prompt: '' to silently reuse existing consent, fall back to consent popup
     this.tokenClient.requestAccessToken({ prompt: '' });
   }
 
@@ -86,6 +98,7 @@ export class GoogleCalendarService {
       google.accounts.oauth2.revoke(token.access_token);
       gapi.client.setToken(null);
     }
+    sessionStorage.removeItem('gapi_token');
     this.authenticated$.next(false);
     this.events$.next([]);
   }

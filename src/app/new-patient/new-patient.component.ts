@@ -6,9 +6,10 @@ import { PatientService } from '../patient.service';
 import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-new-patient',
-  templateUrl: './new-patient.component.html',
-  styleUrls: ['./new-patient.component.css']
+    selector: 'app-new-patient',
+    templateUrl: './new-patient.component.html',
+    styleUrls: ['./new-patient.component.css'],
+    standalone: false
 })
 export class NewPatientComponent implements OnInit {
 

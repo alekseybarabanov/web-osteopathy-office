@@ -8,9 +8,10 @@ import { MessageService } from '../message.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-patient-visit',
-  templateUrl: './patient-visit.component.html',
-  styleUrls: ['./patient-visit.component.css'],
+    selector: 'app-patient-visit',
+    templateUrl: './patient-visit.component.html',
+    styleUrls: ['./patient-visit.component.css'],
+    standalone: false
 })
 export class PatientVisitComponent implements OnInit, AfterViewInit {
 

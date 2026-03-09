@@ -11,9 +11,10 @@ import { Patient } from '../patients';
 import { PatientService } from '../patient.service';
 
 @Component({
-  selector: 'app-patient-search',
-  templateUrl: './patient-search.component.html',
-  styleUrls: [ './patient-search.component.css' ]
+    selector: 'app-patient-search',
+    templateUrl: './patient-search.component.html',
+    styleUrls: ['./patient-search.component.css'],
+    standalone: false
 })
 export class PatientSearchComponent implements OnInit {
   patients$!: Observable<Patient[]>;

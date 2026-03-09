@@ -10,9 +10,10 @@ import { Patient, PatientImpl } from '../patients';
 import { PatientService } from '../patient.service';
 
 @Component({
-  selector: 'app-latest-patients',
-  templateUrl: './latest-patients.component.html',
-  styleUrls: ['./latest-patients.component.css']
+    selector: 'app-latest-patients',
+    templateUrl: './latest-patients.component.html',
+    styleUrls: ['./latest-patients.component.css'],
+    standalone: false
 })
 
 export class LatestPatientsComponent implements OnInit {
