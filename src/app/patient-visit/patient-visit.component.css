@@ -30,6 +30,7 @@ label {
 .visit-layout {
   display: flex;
   gap: 8px;
+  align-items: stretch;
 }
 
 .visit-left {
@@ -43,6 +44,8 @@ label {
 .visit-left .longtext {
   width: 100%;
   flex: 1;
+  max-height: none;
+  overflow-y: auto;
 }
 
 .visit-right {

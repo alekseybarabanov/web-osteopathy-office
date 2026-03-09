@@ -7,8 +7,8 @@
   <div class="visit-left">
     <textarea class=anamnesis id="patient-visit-complaints" rows="5" [ngModel]="visit.complaints" (ngModelChange)="this.visit.complaints = $event; this.changed.emit();" placeholder="Жалобы"></textarea>
     <textarea class=anamnesis id="patient-visit-anamnesis" rows="5" [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
-    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-treatment-plan" [ngModel]="visit.treatmentPlan" (ngModelChange)="this.visit.treatmentPlan = $event; this.changed.emit();" placeholder="План лечения"></textarea>
-    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-recommendations" [ngModel]="visit.recommendations" (ngModelChange)="this.visit.recommendations = $event; this.changed.emit();" placeholder="Рекоммендации"></textarea>
+    <textarea class="longtext" id="patient-treatment-plan" [ngModel]="visit.treatmentPlan" (ngModelChange)="this.visit.treatmentPlan = $event; this.changed.emit();" placeholder="План лечения"></textarea>
+    <textarea class="longtext" id="patient-recommendations" [ngModel]="visit.recommendations" (ngModelChange)="this.visit.recommendations = $event; this.changed.emit();" placeholder="Рекоммендации"></textarea>
   </div>
   <div class="visit-right">
   <table id="customers">
