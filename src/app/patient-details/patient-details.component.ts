@@ -28,7 +28,7 @@ export class PatientDetailsComponent implements OnInit {
     this.getPatient();
 
     this.changes.pipe(
-      debounceTime(1000)
+      debounceTime(10000)
     ).subscribe(x =>  this.save() );
   }
 
