@@ -3,9 +3,14 @@
   <label for="patient-visit-date">Дата приема: </label>
   <input [ngModel]="visitDate" (ngModelChange)="onVisitDate($event); this.changed.emit();">
 </div>
-<div class="text-row">
-  <textarea class=anamnesis id="patient-visit-complaints" rows="5" [ngModel]="visit.complaints" (ngModelChange)="this.visit.complaints = $event; this.changed.emit();" placeholder="Жалобы"></textarea>
-  <textarea class=anamnesis id="patient-visit-anamnesis" rows="5" [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
+<div class="visit-layout">
+  <div class="visit-left">
+    <textarea class=anamnesis id="patient-visit-complaints" rows="5" [ngModel]="visit.complaints" (ngModelChange)="this.visit.complaints = $event; this.changed.emit();" placeholder="Жалобы"></textarea>
+    <textarea class=anamnesis id="patient-visit-anamnesis" rows="5" [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
+    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-treatment-plan" [ngModel]="visit.treatmentPlan" (ngModelChange)="this.visit.treatmentPlan = $event; this.changed.emit();" placeholder="План лечения"></textarea>
+    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-recommendations" [ngModel]="visit.recommendations" (ngModelChange)="this.visit.recommendations = $event; this.changed.emit();" placeholder="Рекоммендации"></textarea>
+  </div>
+  <div class="visit-right">
   <table id="customers">
     <tr>
       <th class="narrowCol"></th>
@@ -223,10 +228,7 @@
         <input id="dominant" class="longtext" [ngModel]="visit.dominant" (ngModelChange)="this.visit.dominant = $event; this.changed.emit();"/>
       </td>
     </tr>
-  </table>  
-  <div class="text-row">
-    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-treatment-plan" [ngModel]="visit.treatmentPlan" (ngModelChange)="this.visit.treatmentPlan = $event; this.changed.emit();" placeholder="План лечения"></textarea>
-    <textarea class="longtext" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' id="patient-recommendations" [ngModel]="visit.recommendations" (ngModelChange)="this.visit.recommendations = $event; this.changed.emit();" placeholder="Рекоммендации"></textarea>
+  </table>
   </div>
 </div>
 </div>

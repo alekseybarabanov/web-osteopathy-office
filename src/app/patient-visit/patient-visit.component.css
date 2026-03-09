@@ -27,14 +27,26 @@ label {
   font-size: small;
 }
 
-.text-row {
+.visit-layout {
   display: flex;
+  gap: 8px;
+}
+
+.visit-left {
+  flex: 0 0 33%;
+  display: flex;
+  flex-direction: column;
   gap: 4px;
 }
 
-.text-row .anamnesis,
-.text-row .longtext {
+.visit-left .anamnesis,
+.visit-left .longtext {
+  width: 100%;
   flex: 1;
+}
+
+.visit-right {
+  flex: 0 0 66%;
 }
 
 .visit {
