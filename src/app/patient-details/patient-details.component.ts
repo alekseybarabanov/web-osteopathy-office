@@ -49,7 +49,10 @@ export class PatientDetailsComponent implements OnInit {
   }
 
   newVisit(): void {
-    this.patient!.currentVisit = {visitDate: new Date()}
+    const previousAnamnesis = this.patient!.visits?.length
+      ? this.patient!.visits[this.patient!.visits.length - 1].anamnesis
+      : undefined;
+    this.patient!.currentVisit = {visitDate: new Date(), anamnesis: previousAnamnesis}
   }
 
   dropVisit(): void {

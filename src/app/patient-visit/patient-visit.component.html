@@ -4,8 +4,8 @@
   <input [ngModel]="visitDate" (ngModelChange)="onVisitDate($event); this.changed.emit();">
 </div>
 <div>
-  <textarea class=anamnesis id="patient-visit-complaints" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [ngModel]="visit.complaints" (ngModelChange)="this.visit.complaints = $event; this.changed.emit();" placeholder="Жалобы"></textarea>
-  <textarea class=anamnesis id="patient-visit-anamnesis" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
+  <textarea class=anamnesis id="patient-visit-complaints" rows="5" [ngModel]="visit.complaints" (ngModelChange)="this.visit.complaints = $event; this.changed.emit();" placeholder="Жалобы"></textarea>
+  <textarea class=anamnesis id="patient-visit-anamnesis" rows="5" [ngModel]="visit.anamnesis" (ngModelChange)="this.visit.anamnesis = $event; this.changed.emit();" placeholder="Анамнез"></textarea>
   <table id="customers">
     <tr>
       <th class="narrowCol"></th>

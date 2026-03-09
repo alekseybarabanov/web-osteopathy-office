@@ -1,7 +1,6 @@
 /* PatientDetailComponent's private CSS styles */
 :host {
-  display: flex;
-  flex-direction: column;
+  display: block;
   height: calc(100vh - 80px);
   overflow: hidden;
 }
@@ -10,14 +9,13 @@ label {
   font-weight: bold;
 }
 input {
-  font-size: 1em;
-  padding: .5rem;
+  font-size: 0.9em;
+  padding: .3rem;
 }
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  font-size: x-large;
-  flex-shrink: 0;
+  font-size: large;
 }
 input {
   border-style: hidden;
@@ -33,21 +31,15 @@ input {
   font-size: 16px;
   resize: none;
 }
-.visit-scroll {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-}
 .actions {
-  flex-shrink: 0;
+  margin: 2px 0;
 }
 button {
-  margin-top: 10px;
-  margin-right: .5rem;
+  margin: 2px .5rem 2px 0;
   background-color: #eee;
-  padding: 0.8rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 button:hover {
   background-color: #cfd8dc;
@@ -61,16 +53,3 @@ button:disabled {
   color: rgb(213, 207, 240);
   opacity: 0.5; /* Firefox */
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

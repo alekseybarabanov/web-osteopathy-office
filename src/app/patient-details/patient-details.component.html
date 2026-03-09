@@ -18,11 +18,9 @@
     <button *ngIf="patient.currentVisit == null" type="button" (click)="newVisit()">Новый прием</button>
     <button *ngIf="patient.currentVisit != null" type="button" (click)="dropVisit()">Удалить прием</button>
   </div>
-  <div class="visit-scroll">
-    <app-patient-visit *ngIf="patient.currentVisit != null" [patient]="patient" [visit]="patient.currentVisit" (changed)="changed()"></app-patient-visit>
-    <div *ngIf="patient != null && patient.visits != null && patient.visits.length > 0">
-      <app-patient-history [patient]="patient" (changed)="changed()"></app-patient-history>
-    </div>
+  <app-patient-visit *ngIf="patient.currentVisit != null" [patient]="patient" [visit]="patient.currentVisit" (changed)="changed()"></app-patient-visit>
+  <div *ngIf="patient != null && patient.visits != null && patient.visits.length > 0">
+    <app-patient-history [patient]="patient" (changed)="changed()"></app-patient-history>
   </div>
 </div>
 
