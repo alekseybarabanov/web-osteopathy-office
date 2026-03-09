@@ -65,6 +65,28 @@ ul.search-result {
   padding-left: 0;
 }
 
+.main-split {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.main-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.main-right {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .main-split {
+    flex-direction: column;
+  }
+}
+
 
 /*
 Copyright Google LLC. All Rights Reserved.

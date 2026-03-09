@@ -20,7 +20,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # copy the built application from the build stage to the nginx html
 # directory
 COPY --from=build /app/dist/browser /usr/share/nginx/html
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-# The above commands build the Angular app and then configure and build a
-# Docker image for serving it using the nginx web server.
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 

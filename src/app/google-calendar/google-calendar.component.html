@@ -1,0 +1,96 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <h2>Календарь</h2>
+    <button *ngIf="authenticated" class="auth-button signout" (click)="signOut()">
+      Выйти
+    </button>
+  </div>
+
+  <div class="calendar-layout">
+    <!-- Left: month grid -->
+    <div class="calendar-month">
+      <div class="calendar-nav">
+        <button class="nav-button" (click)="monthCollapsed ? prevDay() : prevMonth()">&larr;</button>
+        <span class="month-name" (click)="monthCollapsed = !monthCollapsed">
+          {{ monthCollapsed ? selectedDayName : monthName }}
+          <span class="collapse-icon">{{ monthCollapsed ? '&#9660;' : '&#9650;' }}</span>
+        </span>
+        <button class="nav-button" (click)="monthCollapsed ? nextDay() : nextMonth()">&rarr;</button>
+      </div>
+
+      <table class="calendar-grid" *ngIf="!monthCollapsed">
+        <thead>
+          <tr>
+            <th *ngFor="let day of dayNames">{{ day }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let week of weeks">
+            <td
+              *ngFor="let day of week"
+              [class.other-month]="!day.isCurrentMonth"
+              [class.today]="day.isToday"
+              [class.selected]="isSelected(day)"
+              [class.has-events]="day.events.length > 0"
+              (click)="selectDay(day)"
+            >
+              <span class="day-number">{{ day.date.getDate() }}</span>
+              <div class="event-dots">
+                <span
+                  *ngFor="let event of day.events; let i = index"
+                  class="event-dot"
+                  [style.background-color]="event.color"
+                  [title]="event.summary"
+                ></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right: day schedule -->
+    <div class="day-schedule" *ngIf="selectedDay">
+      <h3 class="day-title">{{ selectedDayName }}</h3>
+
+      <div *ngIf="authenticated">
+        <!-- All-day events -->
+        <div *ngIf="allDayEvents.length > 0" class="all-day-section">
+          <div *ngFor="let event of allDayEvents" class="all-day-event">
+            <span class="all-day-badge" [style.background-color]="event.color">Весь день</span>
+            <span class="event-summary">{{ event.summary }}</span>
+            <span class="event-calendar-name">{{ event.calendarName }}</span>
+          </div>
+        </div>
+
+        <!-- Hourly schedule -->
+        <div class="hour-grid">
+          <div *ngFor="let slot of hourSlots" class="hour-row" [class.has-event]="slot.events.length > 0">
+            <span class="hour-label">{{ slot.label }}</span>
+            <div class="hour-content">
+              <ng-container *ngFor="let he of slot.events">
+                <div *ngIf="he.isStart" class="hour-event" [style.border-left-color]="he.event.color">
+                  <span class="event-time">
+                    {{ formatTime(he.event.start) }}&ndash;{{ formatTime(he.event.end) }}
+                  </span>
+                  <span class="event-summary">{{ he.event.summary }}</span>
+                  <span class="event-meta">
+                    <span class="event-duration">{{ eventDuration(he.event) }}</span>
+                    <span class="event-calendar-name">{{ he.event.calendarName }}</span>
+                  </span>
+                </div>
+                <div *ngIf="!he.isStart" class="hour-event continuation" [style.border-left-color]="he.event.color">
+                  <span class="event-summary continuation-text">{{ he.event.summary }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="allDayEvents.length === 0 && selectedDay.events.length === 0" class="no-events">
+          Нет событий
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

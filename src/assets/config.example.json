@@ -1,0 +1,7 @@
+{
+  "googleClientId": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+  "googleApiKey": "YOUR_API_KEY",
+  "googleCalendarIds": [
+    "primary"
+  ]
+}
