@@ -1,8 +1,6 @@
 /* PatientDetailComponent's private CSS styles */
 :host {
   display: block;
-  height: calc(100vh - 80px);
-  overflow: hidden;
 }
 label {
   color: #435960;

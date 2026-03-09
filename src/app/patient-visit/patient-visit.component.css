@@ -27,6 +27,16 @@ label {
   font-size: small;
 }
 
+.text-row {
+  display: flex;
+  gap: 4px;
+}
+
+.text-row .anamnesis,
+.text-row .longtext {
+  flex: 1;
+}
+
 .visit {
   margin-top: 4px;
 }
