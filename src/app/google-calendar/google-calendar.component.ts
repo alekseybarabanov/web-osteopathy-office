@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GoogleCalendarService, CalendarEvent } from './google-calendar.service';
 import { GoogleCalendarConfigService } from './google-calendar.config';
@@ -28,6 +28,7 @@ interface HourSlot {
     standalone: false
 })
 export class GoogleCalendarComponent implements OnInit, OnDestroy {
+  @Output() eventClicked = new EventEmitter<string>();
   authenticated = false;
   currentMonth = new Date();
   weeks: CalendarDay[][] = [];
@@ -112,6 +113,12 @@ export class GoogleCalendarComponent implements OnInit, OnDestroy {
       });
     };
     document.head.appendChild(gapiScript);
+  }
+
+  onEventClick(event: CalendarEvent): void {
+    const match = event.summary.match(/^[a-zA-Zа-яА-ЯёЁ\s]+/);
+    const wordsOnly = match ? match[0].trim() : '';
+    this.eventClicked.emit(wordsOnly);
   }
 
   signIn(): void {

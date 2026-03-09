@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, Subject } from 'rxjs';
@@ -17,6 +17,7 @@ import { PatientService } from '../patient.service';
     standalone: false
 })
 export class PatientSearchComponent implements OnInit {
+  @ViewChild('searchBox') searchBox!: ElementRef<HTMLInputElement>;
   patients$!: Observable<Patient[]>;
   private searchTerms = new Subject<string>();
 
@@ -27,6 +28,11 @@ export class PatientSearchComponent implements OnInit {
   // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  onCalendarEventClick(text: string): void {
+    this.searchBox.nativeElement.value = text;
+    this.search(text);
   }
 
   add(name: string): void {

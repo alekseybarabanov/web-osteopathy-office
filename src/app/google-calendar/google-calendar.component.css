@@ -277,3 +277,11 @@
   color: #999;
   font-style: italic;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  opacity: 0.8;
+}

@@ -59,7 +59,7 @@
       <div *ngIf="authenticated">
         <!-- All-day events -->
         <div *ngIf="allDayEvents.length > 0" class="all-day-section">
-          <div *ngFor="let event of allDayEvents" class="all-day-event">
+          <div *ngFor="let event of allDayEvents" class="all-day-event clickable" (click)="onEventClick(event)">
             <span class="all-day-badge" [style.background-color]="event.color">Весь день</span>
             <span class="event-summary">{{ event.summary }}</span>
             <span class="event-calendar-name">{{ event.calendarName }}</span>
@@ -72,7 +72,7 @@
             <span class="hour-label">{{ slot.label }}</span>
             <div class="hour-content">
               <ng-container *ngFor="let he of slot.events">
-                <div *ngIf="he.isStart" class="hour-event" [style.background-color]="he.event.color + '20'" [style.border-left-color]="he.event.color">
+                <div *ngIf="he.isStart" class="hour-event clickable" [style.background-color]="he.event.color + '20'" [style.border-left-color]="he.event.color" (click)="onEventClick(he.event)">
                   <span class="event-time">
                     {{ formatTime(he.event.start) }}&ndash;{{ formatTime(he.event.end) }}
                   </span>
@@ -82,7 +82,7 @@
                     <span class="event-calendar-name">{{ he.event.calendarName }}</span>
                   </span>
                 </div>
-                <div *ngIf="!he.isStart" class="hour-event continuation" [style.background-color]="he.event.color + '15'" [style.border-left-color]="he.event.color">
+                <div *ngIf="!he.isStart" class="hour-event continuation clickable" [style.background-color]="he.event.color + '15'" [style.border-left-color]="he.event.color" (click)="onEventClick(he.event)">
                   <span class="event-summary continuation-text">{{ he.event.summary }}</span>
                 </div>
               </ng-container>

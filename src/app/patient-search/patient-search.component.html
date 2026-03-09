@@ -27,6 +27,6 @@
     <app-latest-patients></app-latest-patients>
   </div>
   <div class="main-right">
-    <app-google-calendar></app-google-calendar>
+    <app-google-calendar (eventClicked)="onCalendarEventClick($event)"></app-google-calendar>
   </div>
 </div>
