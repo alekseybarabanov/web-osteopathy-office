@@ -85,6 +85,7 @@ th, td {
 .neck-struct-details {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2px;
   margin-top: 2px;
 }

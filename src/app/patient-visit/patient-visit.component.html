@@ -107,7 +107,12 @@
             <td>
               <app-estimation-points [selected]="visit.regionBrestStruct" (changeEmitter)="this.visit.regionBrestStruct = $event; this.changed.emit();"></app-estimation-points>
               <div class="neck-struct-details">
-                <label *ngFor="let item of brestStructItems" class="neck-struct-label">
+                <label *ngFor="let item of brestStructItemsRow1" class="neck-struct-label">
+                  <input type="checkbox" [checked]="isBrestStructSelected(item)" (change)="toggleBrestStruct(item)">{{item}}
+                </label>
+              </div>
+              <div class="neck-struct-details">
+                <label *ngFor="let item of brestStructItemsRow2" class="neck-struct-label">
                   <input type="checkbox" [checked]="isBrestStructSelected(item)" (change)="toggleBrestStruct(item)">{{item}}
                 </label>
               </div>
