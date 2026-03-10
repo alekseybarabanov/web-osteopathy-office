@@ -24,6 +24,7 @@ export interface Visit {
   globNeiroPostural?: number;
   regionHeadStruct?: number;
   regionNeckStruct?: number;
+  regionNeckStructDetails?: string;
   regionNeckVistz?: number;
   regionHandsStruct?: number;
   regionBrestStruct?: number;

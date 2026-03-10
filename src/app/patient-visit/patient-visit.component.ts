@@ -61,6 +61,27 @@ export class PatientVisitComponent implements OnInit, AfterViewInit {
     }
   }
   
+  neckStructItems = ['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7'];
+
+  isNeckStructSelected(item: string): boolean {
+    if (!this.visit.regionNeckStructDetails) return false;
+    return this.visit.regionNeckStructDetails.split(',').includes(item);
+  }
+
+  toggleNeckStruct(item: string): void {
+    const current = this.visit.regionNeckStructDetails
+      ? this.visit.regionNeckStructDetails.split(',').filter(s => s)
+      : [];
+    const idx = current.indexOf(item);
+    if (idx >= 0) {
+      current.splice(idx, 1);
+    } else {
+      current.push(item);
+    }
+    this.visit.regionNeckStructDetails = current.length > 0 ? current.join(',') : undefined;
+    this.changed.emit();
+  }
+
   public onGlobalBio(event: number | undefined): void {
     //do something on the parent with the data
     this.visit.globBio = event
