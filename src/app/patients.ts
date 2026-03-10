@@ -26,7 +26,8 @@ export interface Visit {
   regionNeckStruct?: number;
   regionNeckStructDetails?: string;
   regionNeckVistz?: number;
-  regionHandsStruct?: number;
+  regionHandsRightStruct?: number;
+  regionHandsLeftStruct?: number;
   regionBrestStruct?: number;
   regionBrestStructDetails?: string;
   regionBrestVistz?: number;
@@ -35,7 +36,8 @@ export interface Visit {
   regionLowerBackVistz?: number;
   regionPelvicStruct?: number;
   regionPelvicVistz?: number;
-  regionLegsStruct?: number;
+  regionLegsRightStruct?: number;
+  regionLegsLeftStruct?: number;
   regionDuraMaterStruct?: number;
   regionCr?: number;
   regionC1C3Vistz?: number;

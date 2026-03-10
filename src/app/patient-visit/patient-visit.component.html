@@ -95,7 +95,10 @@
           <tr>
             <td>Верхних конечностей</td>
             <td>
-              <app-estimation-points [selected]="visit.regionHandsStruct" (changeEmitter)="this.visit.regionHandsStruct = $event; this.changed.emit();"></app-estimation-points>
+              <span class="split-label">П</span>
+              <app-estimation-points [selected]="visit.regionHandsRightStruct" (changeEmitter)="this.visit.regionHandsRightStruct = $event; this.changed.emit();"></app-estimation-points>
+              <span class="split-label">Л</span>
+              <app-estimation-points [selected]="visit.regionHandsLeftStruct" (changeEmitter)="this.visit.regionHandsLeftStruct = $event; this.changed.emit();"></app-estimation-points>
             </td>
             <td></td>
           </tr>
@@ -139,7 +142,10 @@
           <tr>
             <td>Нижних конечностей</td>
             <td>
-              <app-estimation-points [selected]="visit.regionLegsStruct" (changeEmitter)="this.visit.regionLegsStruct = $event; this.changed.emit();"></app-estimation-points>
+              <span class="split-label">П</span>
+              <app-estimation-points [selected]="visit.regionLegsRightStruct" (changeEmitter)="this.visit.regionLegsRightStruct = $event; this.changed.emit();"></app-estimation-points>
+              <span class="split-label">Л</span>
+              <app-estimation-points [selected]="visit.regionLegsLeftStruct" (changeEmitter)="this.visit.regionLegsLeftStruct = $event; this.changed.emit();"></app-estimation-points>
             </td>
             <td></td>
           </tr>

@@ -101,3 +101,8 @@ th, td {
   margin: 0;
   cursor: pointer;
 }
+
+.split-label {
+  font-size: 0.7vw;
+  margin-left: 2px;
+}
