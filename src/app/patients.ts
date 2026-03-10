@@ -28,8 +28,10 @@ export interface Visit {
   regionNeckVistz?: number;
   regionHandsStruct?: number;
   regionBrestStruct?: number;
+  regionBrestStructDetails?: string;
   regionBrestVistz?: number;
   regionLowerBackStruct?: number;
+  regionLowerBackStructDetails?: string;
   regionLowerBackVistz?: number;
   regionPelvicStruct?: number;
   regionPelvicVistz?: number;

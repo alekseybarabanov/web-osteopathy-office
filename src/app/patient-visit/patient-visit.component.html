@@ -103,6 +103,11 @@
             <td>Грудной</td>
             <td>
               <app-estimation-points [selected]="visit.regionBrestStruct" (changeEmitter)="this.visit.regionBrestStruct = $event; this.changed.emit();"></app-estimation-points>
+              <div class="neck-struct-details">
+                <label *ngFor="let item of brestStructItems" class="neck-struct-label">
+                  <input type="checkbox" [checked]="isBrestStructSelected(item)" (change)="toggleBrestStruct(item)">{{item}}
+                </label>
+              </div>
             </td>
             <td>
               <app-estimation-points [selected]="visit.regionBrestVistz" (changeEmitter)="this.visit.regionBrestVistz = $event; this.changed.emit();"></app-estimation-points>
@@ -112,6 +117,11 @@
             <td>Поясничный</td>
             <td>
               <app-estimation-points [selected]="visit.regionLowerBackStruct" (changeEmitter)="this.visit.regionLowerBackStruct = $event; this.changed.emit();"></app-estimation-points>
+              <div class="neck-struct-details">
+                <label *ngFor="let item of lowerBackStructItems" class="neck-struct-label">
+                  <input type="checkbox" [checked]="isLowerBackStructSelected(item)" (change)="toggleLowerBackStruct(item)">{{item}}
+                </label>
+              </div>
             </td>
             <td>
               <app-estimation-points [selected]="visit.regionLowerBackVistz" (changeEmitter)="this.visit.regionLowerBackVistz = $event; this.changed.emit();"></app-estimation-points>
