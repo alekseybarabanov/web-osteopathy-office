@@ -83,10 +83,10 @@ th, td {
 }
 
 .neck-struct-details {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2px;
-  margin-left: 4px;
-  vertical-align: middle;
+  margin-top: 2px;
 }
 
 .neck-struct-label {

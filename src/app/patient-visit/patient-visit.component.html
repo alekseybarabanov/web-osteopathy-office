@@ -82,11 +82,11 @@
             <td>Шеи</td>
             <td>
               <app-estimation-points [selected]="visit.regionNeckStruct" (changeEmitter)="this.visit.regionNeckStruct = $event; this.changed.emit();"></app-estimation-points>
-              <span class="neck-struct-details">
+              <div class="neck-struct-details">
                 <label *ngFor="let item of neckStructItems" class="neck-struct-label">
                   <input type="checkbox" [checked]="isNeckStructSelected(item)" (change)="toggleNeckStruct(item)">{{item}}
                 </label>
-              </span>
+              </div>
             </td>
             <td>
               <app-estimation-points [selected]="visit.regionNeckVistz" (changeEmitter)="this.visit.regionNeckVistz = $event; this.changed.emit();"></app-estimation-points>
