@@ -68,7 +68,8 @@ ul.search-result {
 .main-split {
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
+  align-items: stretch;
+  height: calc(100vh - 160px);
 }
 
 .main-left {
@@ -79,6 +80,8 @@ ul.search-result {
 .main-right {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 700px) {

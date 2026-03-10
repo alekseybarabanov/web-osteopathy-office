@@ -188,6 +188,7 @@ export class GoogleCalendarComponent implements OnInit, OnDestroy {
 
   selectDay(day: CalendarDay): void {
     this.selectedDay = day;
+    this.monthCollapsed = true;
     this.buildDaySchedule(day);
   }
 
@@ -223,8 +224,21 @@ export class GoogleCalendarComponent implements OnInit, OnDestroy {
     this.allDayEvents = day.events.filter((e) => e.allDay);
     const timedEvents = day.events.filter((e) => !e.allDay);
 
+    // Find the first and last hours with events
+    let firstEventHour = 21;
+    let lastEventHour = 7;
+    for (const e of timedEvents) {
+      const startHour = new Date(e.start).getHours();
+      const endDate = new Date(e.end);
+      const endHour = endDate.getMinutes() > 0 ? endDate.getHours() : endDate.getHours() - 1;
+      if (startHour < firstEventHour) firstEventHour = startHour;
+      if (endHour > lastEventHour) lastEventHour = endHour;
+    }
+    const startFrom = timedEvents.length > 0 ? firstEventHour : 7;
+    const endAt = timedEvents.length > 0 ? lastEventHour : 7;
+
     this.hourSlots = [];
-    for (let h = 7; h <= 21; h++) {
+    for (let h = startFrom; h <= endAt; h++) {
       const hourEvents: HourEvent[] = [];
       for (const e of timedEvents) {
         const startHour = new Date(e.start).getHours();
