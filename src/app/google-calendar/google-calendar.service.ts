@@ -61,8 +61,12 @@ export class GoogleCalendarService {
             console.error('OAuth error:', response.error);
             return;
           }
-          // Persist token for session
-          sessionStorage.setItem('gapi_token', JSON.stringify(response));
+          // Store token with expiry timestamp
+          const tokenData = {
+            ...response,
+            expires_at: Date.now() + (response.expires_in || 3600) * 1000,
+          };
+          localStorage.setItem('gapi_token', JSON.stringify(tokenData));
           gapi.client.setToken(response);
           this.authenticated$.next(true);
           this.loadCalendarMeta().then(() => this.loadEvents(new Date()));
@@ -75,9 +79,15 @@ export class GoogleCalendarService {
   }
 
   private tryRestoreToken(): void {
-    const stored = sessionStorage.getItem('gapi_token');
+    const stored = localStorage.getItem('gapi_token');
     if (stored) {
       const token = JSON.parse(stored);
+      if (token.expires_at && Date.now() >= token.expires_at) {
+        // Token expired, silently request a new one
+        localStorage.removeItem('gapi_token');
+        this.tokenClient.requestAccessToken({ prompt: '' });
+        return;
+      }
       gapi.client.setToken(token);
       this.authenticated$.next(true);
       this.loadCalendarMeta().then(() => this.loadEvents(new Date()));
@@ -98,7 +108,7 @@ export class GoogleCalendarService {
       google.accounts.oauth2.revoke(token.access_token);
       gapi.client.setToken(null);
     }
-    sessionStorage.removeItem('gapi_token');
+    localStorage.removeItem('gapi_token');
     this.authenticated$.next(false);
     this.events$.next([]);
   }
