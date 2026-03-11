@@ -17,4 +17,7 @@ if [ -n "$GOOGLE_CLIENT_ID" ]; then
 EOF
 fi
 
+# Copy privacy policy to about dir (volume-mounted, so Dockerfile COPY is overridden)
+cp /usr/share/nginx/html/assets/privacy-policy.html /usr/share/nginx/about/privacy-policy.html 2>/dev/null || true
+
 exec "$@"

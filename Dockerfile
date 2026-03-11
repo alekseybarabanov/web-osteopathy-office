@@ -20,7 +20,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # copy the built application from the build stage to the nginx html
 # directory
 COPY --from=build /app/dist/browser /usr/share/nginx/html
-COPY src/assets/privacy-policy.html /usr/share/nginx/about/privacy-policy.html
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
